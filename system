@@ -1,0 +1,23 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv(r"C:\Users\scich\Desktop\sentiment-analysis_oracle.csv", sep=";")
+
+df.head()
+
+df.info()
+
+df.describe()
+
+df.isnull().sum()
+
+df = df.dropna()
+
+df[df["SENTIMENT"] == "Positive"]
+
+df["HIGH_CONFIDENCE"] = df["CONFIDENCE_SCORE"] > 0.8
+
+df.groupby("SENTIMENT")["CONFIDENCE_SCORE"].mean()
+
+df["CONFIDENCE_SCORE"].hist()
+plt.show()
